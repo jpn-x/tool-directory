@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投資関係 便利ツール</title>
+<meta name="description" content="株式投資に役立つ無料ウェブツール一覧。X高度検索・高ボラスクリーナー・ストップ高安分析・日証金速報・大量保有報告速報。">
+<meta name="theme-color" content="#0d0f14">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="投資ツール">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e28;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.18);
+    --text: #f0f2f7;
+    --text-muted: #8892a4;
+    --accent: #4f8ef7;
+    --radius: 14px;
+    --font: 'Noto Sans JP', 'Inter', sans-serif;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── PC LAYOUT ─── */
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 48px 80px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .header .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(79,142,247,0.12);
+    border: 1px solid rgba(79,142,247,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin-bottom: 18px;
+  }
+
+  .header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #f0f2f7 0%, #8892a4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header p {
+    margin-top: 14px;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── GRID ─── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* 5枚目は中央寄せ */
+  .grid .card:nth-child(4) { grid-column: 1; }
+  .grid .card:nth-child(5) { grid-column: 2; }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+  }
+
+  .thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .thumb svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .card-body {
+    padding: 16px 18px 20px;
+  }
+
+  .card-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .card-link svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    margin-top: 72px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .footer a:hover { text-decoration: underline; }
+
+  /* ─── MOBILE LAYOUT (9:16) ─── */
+  @media (max-width: 767px) {
+    .page {
+      padding: 40px 20px 60px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+    }
+
+    .header p {
+      font-size: 13px;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .grid .card:nth-child(4),
+    .grid .card:nth-child(5) {
+      grid-column: 1;
+    }
+
+    .card-title {
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 48px;
+    }
+  }
+
+  /* タブレット: 2列 */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid .card:nth-child(4) { grid-column: 1; }
+    .grid .card:nth-child(5) { grid-column: 2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div class="label">Investment Tools</div>
+    <h1>投資関係 便利ツール</h1>
+    <p>株式投資に役立つ無料ウェブツールをまとめました。<br>各ツールは別タブで開きます。</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- ① X高度検索ツール -->
+    <a class="card" href="https://x-post-tools.github.io/x-search/" target="_blank" rel="noopener">
+      <div class="thumb">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="180" fill="#0d1117"/>
+          <!-- grid lines -->
+          <line x1="0" y1="45" x2="320" y2="45" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="90" x2="320" y2="90" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="135" x2="320" y2="135" stroke="#1e2530" stroke-width="1"/>
+          <!-- search bar mock -->
+          <rect x="24" y="22" width="220" height="28" rx="14" fill="#1a1e28" stroke="#2a3040" stroke-width="1"/>
+          <circle cx="42" cy="36" r="7" stroke="#4f8ef7" stroke-width="1.5" fill="none"/>
+          <line x1="47" y1="41" x2="51" y2="45" stroke="#4f8ef7" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="56" y="30" width="100" height="12" rx="6" fill="#2a3040"/>
+          <!-- X logo big -->
+          <text x="268" y="110" font-size="72" font-weight="700" fill="#1d9bf0" opacity="0.15" font-family="Arial">𝕏</text>
+          <!-- result rows -->
+          <rect x="24" y="66" width="272" height="28" rx="6" fill="#1a1e28"/>
+          <circle cx="38" cy="80" r="8" fill="#1d9bf0" opacity="0.6"/>
+          <rect x="54" y="74" width="80" height="6" rx="3" fill="#2a3040"/>
+          <rect x="54" y="84" width="130" height="5" rx="2.5" fill="#1e2530"/>
+          <rect x="24" y="100" width="272" height="28" rx="6" fill="#1a1e28"/>
+          <circle cx="38" cy="114" r="8" fill="#4f8ef7" opacity="0.5"/>
+          <rect x="54" y="108" width="60" height="6" rx="3" fill="#2a3040"/>
+          <rect x="54" y="118" width="150" height="5" rx="2.5" fill="#1e2530"/>
+          <rect x="24" y="134" width="272" height="28" rx="6" fill="#1a1e28"/>
+          <circle cx="38" cy="148" r="8" fill="#8892a4" opacity="0.4"/>
+          <rect x="54" y="142" width="90" height="6" rx="3" fill="#2a3040"/>
+          <rect x="54" y="152" width="110" height="5" rx="2.5" fill="#1e2530"/>
+          <!-- label -->
+          <rect x="260" y="22" width="36" height="18" rx="9" fill="rgba(79,142,247,0.2)"/>
+          <text x="278" y="34" font-size="9" fill="#4f8ef7" font-family="Arial" text-anchor="middle" font-weight="700">X</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">SNS 検索</div>
+        <div class="card-title">X 高度検索ツール</div>
+        <div class="card-link">
+          x-post-tools.github.io
+          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- ② 高ボラ銘柄スクリーナー -->
+    <a class="card" href="https://jpn-x.github.io/kabu-screener/desktop.html" target="_blank" rel="noopener">
+      <div class="thumb">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="180" fill="#0d1117"/>
+          <line x1="0" y1="45" x2="320" y2="45" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="90" x2="320" y2="90" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="135" x2="320" y2="135" stroke="#1e2530" stroke-width="1"/>
+          <!-- candle chart -->
+          <line x1="52" y1="60" x2="52" y2="140" stroke="#1e2530" stroke-width="1"/>
+          <line x1="100" y1="60" x2="100" y2="140" stroke="#1e2530" stroke-width="1"/>
+          <line x1="148" y1="60" x2="148" y2="140" stroke="#1e2530" stroke-width="1"/>
+          <line x1="196" y1="60" x2="196" y2="140" stroke="#1e2530" stroke-width="1"/>
+          <line x1="244" y1="60" x2="244" y2="140" stroke="#1e2530" stroke-width="1"/>
+          <!-- candles green -->
+          <line x1="52" y1="68" x2="52" y2="125" stroke="#26c17b" stroke-width="1"/>
+          <rect x="45" y="78" width="14" height="36" rx="2" fill="#26c17b"/>
+          <line x1="100" y1="55" x2="100" y2="118" stroke="#26c17b" stroke-width="1"/>
+          <rect x="93" y="65" width="14" height="45" rx="2" fill="#26c17b"/>
+          <!-- candle red -->
+          <line x1="148" y1="70" x2="148" y2="130" stroke="#ef5050" stroke-width="1"/>
+          <rect x="141" y="80" width="14" height="38" rx="2" fill="#ef5050"/>
+          <!-- candles green -->
+          <line x1="196" y1="62" x2="196" y2="115" stroke="#26c17b" stroke-width="1"/>
+          <rect x="189" y="70" width="14" height="38" rx="2" fill="#26c17b"/>
+          <line x1="244" y1="48" x2="244" y2="105" stroke="#26c17b" stroke-width="1"/>
+          <rect x="237" y="56" width="14" height="42" rx="2" fill="#26c17b" opacity="0.8"/>
+          <!-- top badges -->
+          <rect x="24" y="20" width="60" height="16" rx="8" fill="rgba(38,193,123,0.15)"/>
+          <text x="54" y="31" font-size="8" fill="#26c17b" font-family="Arial" text-anchor="middle" font-weight="700">高ボラ</text>
+          <rect x="92" y="20" width="60" height="16" rx="8" fill="rgba(255,184,0,0.12)"/>
+          <text x="122" y="31" font-size="8" fill="#ffb800" font-family="Arial" text-anchor="middle" font-weight="700">急騰率</text>
+          <rect x="160" y="20" width="60" height="16" rx="8" fill="rgba(79,142,247,0.12)"/>
+          <text x="190" y="31" font-size="8" fill="#4f8ef7" font-family="Arial" text-anchor="middle" font-weight="700">出来高</text>
+          <!-- vol bars bottom -->
+          <rect x="38" y="150" width="14" height="16" rx="2" fill="#26c17b" opacity="0.4"/>
+          <rect x="86" y="142" width="14" height="24" rx="2" fill="#26c17b" opacity="0.6"/>
+          <rect x="134" y="155" width="14" height="11" rx="2" fill="#ef5050" opacity="0.4"/>
+          <rect x="182" y="145" width="14" height="21" rx="2" fill="#26c17b" opacity="0.5"/>
+          <rect x="230" y="138" width="14" height="28" rx="2" fill="#26c17b" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">銘柄スクリーニング</div>
+        <div class="card-title">高ボラ銘柄スクリーナー</div>
+        <div class="card-link">
+          jpn-x.github.io/kabu-screener
+          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- ③ ストップ高安ギャップ分析 -->
+    <a class="card" href="https://jpn-x.github.io/kabu-stop/" target="_blank" rel="noopener">
+      <div class="thumb">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="180" fill="#0d1117"/>
+          <line x1="0" y1="45" x2="320" y2="45" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="90" x2="320" y2="90" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="135" x2="320" y2="135" stroke="#1e2530" stroke-width="1"/>
+          <!-- area chart -->
+          <defs>
+            <linearGradient id="gUp" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ef5050" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#ef5050" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="gDown" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4f8ef7" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#4f8ef7" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- stop high area -->
+          <path d="M24,120 L70,100 L116,80 L162,65 L208,50 L254,40 L296,35 L296,168 L24,168 Z" fill="url(#gUp)"/>
+          <path d="M24,120 L70,100 L116,80 L162,65 L208,50 L254,40 L296,35" fill="none" stroke="#ef5050" stroke-width="2" stroke-linejoin="round"/>
+          <!-- stop low area -->
+          <path d="M24,140 L70,145 L116,138 L162,132 L208,138 L254,130 L296,125 L296,168 L24,168 Z" fill="url(#gDown)"/>
+          <path d="M24,140 L70,145 L116,138 L162,132 L208,138 L254,130 L296,125" fill="none" stroke="#4f8ef7" stroke-width="2" stroke-linejoin="round"/>
+          <!-- labels -->
+          <rect x="24" y="22" width="70" height="16" rx="8" fill="rgba(239,80,80,0.15)"/>
+          <text x="59" y="33" font-size="8" fill="#ef5050" font-family="Arial" text-anchor="middle" font-weight="700">ストップ高</text>
+          <rect x="104" y="22" width="70" height="16" rx="8" fill="rgba(79,142,247,0.12)"/>
+          <text x="139" y="33" font-size="8" fill="#4f8ef7" font-family="Arial" text-anchor="middle" font-weight="700">ストップ安</text>
+          <!-- gap arrows -->
+          <line x1="162" y1="68" x2="162" y2="128" stroke="#fff" stroke-width="1" stroke-dasharray="3,2" opacity="0.2"/>
+          <text x="168" y="102" font-size="8" fill="#8892a4" font-family="Arial">GAP</text>
+          <line x1="254" y1="43" x2="254" y2="126" stroke="#fff" stroke-width="1" stroke-dasharray="3,2" opacity="0.2"/>
+          <!-- date labels -->
+          <text x="24" y="176" font-size="8" fill="#8892a4" font-family="Arial">6/1</text>
+          <text x="112" y="176" font-size="8" fill="#8892a4" font-family="Arial">6/5</text>
+          <text x="200" y="176" font-size="8" fill="#8892a4" font-family="Arial">6/9</text>
+          <text x="280" y="176" font-size="8" fill="#8892a4" font-family="Arial">6/11</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">マーケット分析</div>
+        <div class="card-title">日々ストップ高安 ギャップ分析</div>
+        <div class="card-link">
+          jpn-x.github.io/kabu-stop
+          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- ④ 日証金ニュース -->
+    <a class="card" href="https://jpn-x.github.io/taisyaku-news/?v=1781172754283" target="_blank" rel="noopener">
+      <div class="thumb">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="180" fill="#0d1117"/>
+          <line x1="0" y1="45" x2="320" y2="45" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="90" x2="320" y2="90" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="135" x2="320" y2="135" stroke="#1e2530" stroke-width="1"/>
+          <!-- newspaper icon top -->
+          <rect x="120" y="24" width="80" height="56" rx="4" fill="#1a1e28" stroke="#2a3040" stroke-width="1"/>
+          <rect x="128" y="32" width="64" height="6" rx="3" fill="#2a3040"/>
+          <rect x="128" y="43" width="48" height="4" rx="2" fill="#1e2530"/>
+          <rect x="128" y="51" width="56" height="4" rx="2" fill="#1e2530"/>
+          <rect x="128" y="59" width="40" height="4" rx="2" fill="#1e2530"/>
+          <rect x="128" y="67" width="52" height="4" rx="2" fill="#1e2530"/>
+          <!-- notification dot -->
+          <circle cx="196" cy="28" r="6" fill="#ef5050"/>
+          <text x="196" y="31.5" font-size="7" fill="#fff" font-family="Arial" text-anchor="middle" font-weight="700">!</text>
+          <!-- news items -->
+          <rect x="24" y="98" width="272" height="22" rx="5" fill="#1a1e28"/>
+          <rect x="34" y="104" width="4" height="10" rx="2" fill="#26c17b"/>
+          <rect x="46" y="106" width="120" height="5" rx="2.5" fill="#2a3040"/>
+          <rect x="246" y="106" width="40" height="5" rx="2.5" fill="#1e2530"/>
+          <rect x="24" y="124" width="272" height="22" rx="5" fill="#1a1e28"/>
+          <rect x="34" y="130" width="4" height="10" rx="2" fill="#4f8ef7"/>
+          <rect x="46" y="132" width="100" height="5" rx="2.5" fill="#2a3040"/>
+          <rect x="246" y="132" width="40" height="5" rx="2.5" fill="#1e2530"/>
+          <rect x="24" y="150" width="272" height="22" rx="5" fill="#1a1e28"/>
+          <rect x="34" y="156" width="4" height="10" rx="2" fill="#ffb800"/>
+          <rect x="46" y="158" width="140" height="5" rx="2.5" fill="#2a3040"/>
+          <rect x="246" y="158" width="40" height="5" rx="2.5" fill="#1e2530"/>
+          <!-- label -->
+          <rect x="194" y="22" width="102" height="16" rx="8" fill="rgba(38,193,123,0.12)"/>
+          <text x="245" y="33" font-size="8" fill="#26c17b" font-family="Arial" text-anchor="middle" font-weight="700">自動更新</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">貸借取引 情報</div>
+        <div class="card-title">日証金 お知らせ速報</div>
+        <div class="card-link">
+          jpn-x.github.io/taisyaku-news
+          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- ⑤ 大量保有報告速報 -->
+    <a class="card" href="https://jpn-x.github.io/holdings-radar/" target="_blank" rel="noopener">
+      <div class="thumb">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="180" fill="#0d1117"/>
+          <line x1="0" y1="45" x2="320" y2="45" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="90" x2="320" y2="90" stroke="#1e2530" stroke-width="1"/>
+          <line x1="0" y1="135" x2="320" y2="135" stroke="#1e2530" stroke-width="1"/>
+          <!-- radar chart -->
+          <g transform="translate(92, 95)">
+            <polygon points="0,-52 45,-16 28,42 -28,42 -45,-16" fill="none" stroke="#1e2530" stroke-width="1"/>
+            <polygon points="0,-35 30,-11 19,28 -19,28 -30,-11" fill="none" stroke="#1e2530" stroke-width="1"/>
+            <polygon points="0,-17 15,-5 9,14 -9,14 -15,-5" fill="none" stroke="#1e2530" stroke-width="1"/>
+            <polygon points="0,-45 38,-8 20,36 -24,38 -40,-20" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="1.5"/>
+            <circle cx="0" cy="-45" r="3" fill="#8b5cf6"/>
+            <circle cx="38" cy="-8" r="3" fill="#8b5cf6"/>
+            <circle cx="20" cy="36" r="3" fill="#8b5cf6"/>
+            <circle cx="-24" cy="38" r="3" fill="#8b5cf6"/>
+            <circle cx="-40" cy="-20" r="3" fill="#8b5cf6"/>
+          </g>
+          <!-- right panel -->
+          <rect x="172" y="50" width="124" height="20" rx="5" fill="#1a1e28"/>
+          <circle cx="186" cy="60" r="5" fill="#8b5cf6" opacity="0.7"/>
+          <rect x="196" y="55" width="60" height="5" rx="2.5" fill="#2a3040"/>
+          <rect x="196" y="63" width="40" height="4" rx="2" fill="#1e2530"/>
+          <rect x="172" y="75" width="124" height="20" rx="5" fill="#1a1e28"/>
+          <circle cx="186" cy="85" r="5" fill="#26c17b" opacity="0.7"/>
+          <rect x="196" y="80" width="70" height="5" rx="2.5" fill="#2a3040"/>
+          <rect x="196" y="88" width="50" height="4" rx="2" fill="#1e2530"/>
+          <rect x="172" y="100" width="124" height="20" rx="5" fill="#1a1e28"/>
+          <circle cx="186" cy="110" r="5" fill="#4f8ef7" opacity="0.7"/>
+          <rect x="196" y="105" width="55" height="5" rx="2.5" fill="#2a3040"/>
+          <rect x="196" y="113" width="80" height="4" rx="2" fill="#1e2530"/>
+          <rect x="172" y="125" width="124" height="20" rx="5" fill="#1a1e28"/>
+          <circle cx="186" cy="135" r="5" fill="#ffb800" opacity="0.7"/>
+          <rect x="196" y="130" width="65" height="5" rx="2.5" fill="#2a3040"/>
+          <rect x="196" y="138" width="45" height="4" rx="2" fill="#1e2530"/>
+          <!-- top badge -->
+          <rect x="24" y="22" width="100" height="16" rx="8" fill="rgba(139,92,246,0.15)"/>
+          <text x="74" y="33" font-size="8" fill="#8b5cf6" font-family="Arial" text-anchor="middle" font-weight="700">大量保有 5%ルール</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">開示情報 速報</div>
+        <div class="card-title">大量保有報告 速報</div>
+        <div class="card-link">
+          jpn-x.github.io/holdings-radar
+          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
+        </div>
+      </div>
+    </a>
+
+  </div><!-- /grid -->
+
+  <footer class="footer">
+    <p>
+      各ツールは個人の学習・研究目的で作成されています。投資判断はご自身の責任でお願いします。<br>
+      制作：<a href="https://x.com/murayan2023" target="_blank" rel="noopener">@murayan2023</a>
+      &nbsp;|&nbsp;
+      <a href="https://github.com/jpn-x" target="_blank" rel="noopener">GitHub: jpn-x</a>
+    </p>
+  </footer>
+
+</div><!-- /page -->
+
+</body>
+</html>
