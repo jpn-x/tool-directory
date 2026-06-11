@@ -107,7 +107,13 @@
     text-decoration: none;
     color: inherit;
     display: block;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
   }
+
+  .card:focus { outline: none; }
+  .card:focus:not(:focus-visible) { outline: none; }
 
   .card:hover {
     border-color: var(--border-hover);
@@ -330,5 +336,12 @@
 
 </div><!-- /page -->
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.activeElement && document.activeElement !== document.body) {
+    document.activeElement.blur();
+  }
+});
+</script>
 </body>
 </html>
