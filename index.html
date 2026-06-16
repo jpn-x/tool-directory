@@ -42,6 +42,49 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ─── RELOAD BUTTON ─── */
+  .reload-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    background: rgba(19,22,30,0.85);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    user-select: none;
+    outline: none;
+  }
+  .reload-btn:hover {
+    border-color: rgba(255,255,255,0.28);
+    color: var(--text);
+    background: rgba(30,35,48,0.92);
+  }
+  .reload-btn:active {
+    transform: scale(0.96);
+  }
+  .reload-btn svg {
+    width: 13px;
+    height: 13px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
   /* ─── PC LAYOUT ─── */
   .page {
     max-width: 1200px;
@@ -237,6 +280,11 @@
 </style>
 </head>
 <body>
+
+<button class="reload-btn" onclick="location.reload(true)" title="Shift+Ctrl+R">
+  <svg viewBox="0 0 16 16"><path d="M13.5 2.5A7 7 0 1 0 15 8"/><polyline points="11 1 15 1 15 5"/></svg>
+  強制リロード
+</button>
 
 <div class="page">
 
