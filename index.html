@@ -42,26 +42,28 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── RELOAD BUTTON ─── */
+  /* ─── HEADER TOP ROW ─── */
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
   .reload-btn {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 100;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 7px 13px;
-    background: rgba(19,22,30,0.85);
+    gap: 5px;
+    padding: 5px 11px;
+    background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
+    border-radius: 20px;
     color: var(--text-muted);
     font-family: var(--font);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     cursor: pointer;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     transition: border-color 0.15s, color 0.15s, background 0.15s;
     user-select: none;
     outline: none;
@@ -69,19 +71,13 @@
   .reload-btn:hover {
     border-color: rgba(255,255,255,0.28);
     color: var(--text);
-    background: rgba(30,35,48,0.92);
+    background: rgba(255,255,255,0.09);
   }
-  .reload-btn:active {
-    transform: scale(0.96);
-  }
+  .reload-btn:active { transform: scale(0.96); }
   .reload-btn svg {
-    width: 13px;
-    height: 13px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    width: 11px; height: 11px;
+    stroke: currentColor; fill: none;
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     flex-shrink: 0;
   }
 
@@ -108,8 +104,8 @@
     border: 1px solid rgba(79,142,247,0.25);
     border-radius: 20px;
     padding: 4px 14px;
-    margin-bottom: 18px;
   }
+
 
   .header h1 {
     font-size: 42px;
@@ -200,6 +196,16 @@
     line-height: 1.4;
     color: var(--text);
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    object-fit: cover;
   }
 
   .card-link {
@@ -281,15 +287,16 @@
 </head>
 <body>
 
-<button class="reload-btn" onclick="location.reload(true)" title="Shift+Ctrl+R">
-  <svg viewBox="0 0 16 16"><path d="M13.5 2.5A7 7 0 1 0 15 8"/><polyline points="11 1 15 1 15 5"/></svg>
-  強制リロード
-</button>
-
 <div class="page">
 
   <header class="header">
-    <div class="label">Investment Tools</div>
+    <div class="header-top">
+      <button class="reload-btn" onclick="location.reload(true)" title="Shift+Ctrl+R">
+        <svg viewBox="0 0 16 16"><path d="M13.5 2.5A7 7 0 1 0 15 8"/><polyline points="11 1 15 1 15 5"/></svg>
+        強制リロード
+      </button>
+      <div class="label">Investment Tools</div>
+    </div>
     <h1>投資関係 便利ツール</h1>
     <p>株式投資に役立つ無料ウェブツールをまとめました。<br>各ツールは別タブで開きます。</p>
   </header>
@@ -301,7 +308,7 @@
       <div class="thumb"><img src="thumb-1-xsearch.jpg" alt="X 高度検索ツール" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">SNS 検索</div>
-        <div class="card-title">X 高度検索ツール</div>
+        <div class="card-title"><img class="card-icon" src="site-icon-1.png" alt="">X 高度検索ツール</div>
         <div class="card-link">
           x-post-tools.github.io
           <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
@@ -314,7 +321,7 @@
       <div class="thumb"><img src="thumb-2-screener.jpg" alt="高ボラ銘柄スクリーナー" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">銘柄スクリーニング</div>
-        <div class="card-title">高ボラ銘柄スクリーナー</div>
+        <div class="card-title"><img class="card-icon" src="site-icon-2.png" alt="">高ボラ銘柄スクリーナー</div>
         <div class="card-link">
           jpn-x.github.io/kabu-screener
           <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
@@ -327,7 +334,7 @@
       <div class="thumb"><img src="thumb-3-stop.jpg" alt="ストップ高安ギャップ分析" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">マーケット分析</div>
-        <div class="card-title">日々ストップ高安 ギャップ分析</div>
+        <div class="card-title"><img class="card-icon" src="site-icon-3.png" alt="">日々ストップ高安 ギャップ分析</div>
         <div class="card-link">
           jpn-x.github.io/kabu-stop
           <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
@@ -340,7 +347,7 @@
       <div class="thumb"><img src="thumb-4-taisyaku.jpg" alt="日証金お知らせ速報" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">貸借取引 情報</div>
-        <div class="card-title">日証金 お知らせ速報</div>
+        <div class="card-title"><img class="card-icon" src="site-icon-4.png" alt="">日証金 お知らせ速報</div>
         <div class="card-link">
           jpn-x.github.io/taisyaku-news
           <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
@@ -353,7 +360,7 @@
       <div class="thumb"><img src="thumb-5-holdings.jpg" alt="大量保有報告速報" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">開示情報 速報</div>
-        <div class="card-title">大量保有報告 速報</div>
+        <div class="card-title"><img class="card-icon" src="site-icon-5.png" alt="">大量保有報告 速報</div>
         <div class="card-link">
           jpn-x.github.io/holdings-radar
           <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
@@ -366,7 +373,7 @@
       <div class="thumb"><img src="thumb-6-watch.jpg" alt="東証 危険銘柄ウォッチ" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">リスク管理</div>
-        <div class="card-title">東証 危険銘柄ウォッチ</div>
+        <div class="card-title"><img class="card-icon" src="site-icon-6.png" alt="">東証 危険銘柄ウォッチ</div>
         <div class="card-link">
           jpn-x.github.io/kabu-watch
           <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
