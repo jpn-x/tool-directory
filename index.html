@@ -93,9 +93,6 @@
     gap: 24px;
   }
 
-  /* 5枚目は中央寄せ */
-  .grid .card:nth-child(4) { grid-column: 1; }
-  .grid .card:nth-child(5) { grid-column: 2; }
 
   .card {
     background: var(--bg2);
@@ -221,11 +218,6 @@
       gap: 16px;
     }
 
-    .grid .card:nth-child(4),
-    .grid .card:nth-child(5) {
-      grid-column: 1;
-    }
-
     .card-title {
       font-size: 14px;
     }
@@ -241,8 +233,6 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .grid .card:nth-child(4) { grid-column: 1; }
-    .grid .card:nth-child(5) { grid-column: 2; }
   }
 </style>
 </head>
@@ -318,6 +308,19 @@
         <div class="card-title">大量保有報告 速報</div>
         <div class="card-link">
           jpn-x.github.io/holdings-radar
+          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- ⑥ 東証 危険銘柄ウォッチ -->
+    <a class="card" href="https://jpn-x.github.io/kabu-watch/" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-6-watch.jpg" alt="東証 危険銘柄ウォッチ" loading="lazy"></div>
+      <div class="card-body">
+        <div class="card-tag">リスク管理</div>
+        <div class="card-title">東証 危険銘柄ウォッチ</div>
+        <div class="card-link">
+          jpn-x.github.io/kabu-watch
           <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
         </div>
       </div>
