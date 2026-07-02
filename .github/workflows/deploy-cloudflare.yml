@@ -1,0 +1,27 @@
+name: Deploy to Cloudflare
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 035926d851c17dfd9cf096e0884cd474
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "CLOUDFLARE_API_TOKEN not set; skipping Cloudflare deploy."
+            exit 0
+          fi
+          mkdir -p /tmp/site
+          rsync -a ./ /tmp/site/ --exclude .git --exclude .github --exclude .claude --exclude node_modules --exclude scripts --exclude worker --exclude deploy --exclude .wrangler --exclude __pycache__ --exclude '*.py' --exclude '.env*' --exclude .gitignore --exclude requirements.txt --exclude '*.bat' --exclude README.md
+          npx wrangler@4 deploy --name=tool-directory --compatibility-date=2026-07-01 --assets=/tmp/site
