@@ -24,4 +24,4 @@ jobs:
           fi
           mkdir -p /tmp/site
           rsync -a ./ /tmp/site/ --exclude .git --exclude .github --exclude .claude --exclude node_modules --exclude scripts --exclude worker --exclude deploy --exclude .wrangler --exclude __pycache__ --exclude '*.py' --exclude '.env*' --exclude .gitignore --exclude requirements.txt --exclude '*.bat' --exclude README.md
-          npx wrangler@4 deploy --name=tool-directory --compatibility-date=2026-07-01 --assets=/tmp/site
+          npx wrangler@4 pages deploy /tmp/site --project-name=tool-directory --branch=main
