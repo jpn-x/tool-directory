@@ -141,27 +141,31 @@
   }
 
   .thumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 26px 0 14px;
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    background: #eef6f3;
+    border-bottom: 1px solid var(--border);
   }
 
   .thumb img {
-    width: 84px;
-    height: 84px;
+    width: 100%;
+    height: 100%;
     display: block;
-    filter: drop-shadow(0 8px 14px rgba(20,60,50,0.16));
-    transition: transform 0.25s ease;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.3s ease;
   }
 
   .card:hover .thumb img {
-    transform: translateY(-3px) scale(1.05);
+    transform: scale(1.04);
   }
 
   .card-body {
-    padding: 4px 22px 22px;
-    text-align: center;
+    padding: 16px 20px 20px;
+    text-align: left;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -172,37 +176,33 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     color: var(--accent);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .card-title {
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 700;
-    line-height: 1.45;
+    line-height: 1.4;
     color: var(--text);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .card-desc {
     font-size: 13px;
     color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 16px;
+    line-height: 1.65;
+    margin-bottom: 14px;
     flex: 1;
   }
 
   .card-link {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
+    gap: 5px;
+    align-self: flex-start;
     font-size: 12.5px;
     font-weight: 700;
-    color: #ffffff;
-    background: linear-gradient(120deg, var(--accent) 0%, var(--accent2) 100%);
-    border-radius: 20px;
-    padding: 9px 0;
-    margin-top: auto;
+    color: var(--accent);
   }
 
   .card-link svg {
@@ -263,7 +263,7 @@
   <div class="grid">
 
     <a class="card" href="https://kabu-stop.pages.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/stop-gap.svg" alt="株ストップギャップ分析" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/stop-gap.jpg" alt="株ストップギャップ分析" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">マーケット分析</div>
         <div class="card-title">株ストップギャップ分析</div>
@@ -273,7 +273,7 @@
     </a>
 
     <a class="card" href="https://jpn-x.github.io/kabu-screener/desktop.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/screener.svg" alt="ハイボラデイトレ株スクリーナー" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/screener.jpg" alt="ハイボラデイトレ株スクリーナー" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">銘柄スクリーニング</div>
         <div class="card-title">ハイボラデイトレ株スクリーナー</div>
@@ -283,7 +283,7 @@
     </a>
 
     <a class="card" href="https://ipo-lockup-radar.pages.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/ipo.svg" alt="IPO ロックアップ解除レーダー" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/ipo.jpg" alt="IPO ロックアップ解除レーダー" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">IPO解除カレンダー</div>
         <div class="card-title">IPO ロックアップ解除レーダー</div>
@@ -293,7 +293,7 @@
     </a>
 
     <a class="card" href="https://taisyaku-news.cadillac600.workers.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/taisyaku.svg" alt="日証金ダイジェスト" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/taisyaku.jpg" alt="日証金ダイジェスト" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">貸借取引ニュース</div>
         <div class="card-title">日証金ダイジェスト</div>
@@ -303,7 +303,7 @@
     </a>
 
     <a class="card" href="https://tdnet-web.cadillac600.workers.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/tdnet.svg" alt="TDnet リアルタイム更新ツール" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/tdnet.jpg" alt="TDnet リアルタイム更新ツール" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">適時開示速報</div>
         <div class="card-title">TDnet リアルタイム更新ツール</div>
@@ -313,7 +313,7 @@
     </a>
 
     <a class="card" href="https://kabu-watch-7og.pages.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/watch.svg" alt="上場廃止Watch（危険銘柄）" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/watch.jpg" alt="上場廃止Watch（危険銘柄）" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">リスク管理</div>
         <div class="card-title">上場廃止Watch（危険銘柄）</div>
@@ -323,7 +323,7 @@
     </a>
 
     <a class="card" href="https://holdings-radar.pages.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/holdings.svg" alt="大量保有速報 Radar" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/holdings.jpg" alt="大量保有速報 Radar" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">開示情報速報</div>
         <div class="card-title">大量保有速報 Radar</div>
@@ -333,7 +333,7 @@
     </a>
 
     <a class="card" href="https://stop-data.cadillac600.workers.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/stop-data.svg" alt="直近ストップ高・安 一覧" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/stop-data.jpg" alt="直近ストップ高・安 一覧" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">ランキング</div>
         <div class="card-title">直近ストップ高・安 一覧</div>
@@ -343,7 +343,7 @@
     </a>
 
     <a class="card" href="https://x-search.cadillac600.workers.dev" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/xsearch.svg" alt="X 高度検索ツール" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/xsearch.jpg" alt="X 高度検索ツール" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">SNS検索</div>
         <div class="card-title">X 高度検索ツール</div>
@@ -353,7 +353,7 @@
     </a>
 
     <a class="card" href="https://jpn-x.github.io/moshimo-nisa/" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-icons/nisa.svg" alt="もしもNISAシミュレーター" loading="lazy"></div>
+      <div class="thumb"><img src="thumbs/nisa.jpg" alt="もしもNISAシミュレーター" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">資産シミュレーション</div>
         <div class="card-title">もしもNISAシミュレーター</div>
