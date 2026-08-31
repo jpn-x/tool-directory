@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g-tdnet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3FA9F5"/>
+      <stop offset="100%" stop-color="#7BDFF2"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#g-tdnet)"/>
+  
+  <circle cx="100" cy="118" r="12" fill="#fff"/>
+  <path d="M78 100 A 32 32 0 0 1 122 100" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <path d="M62 84 A 56 56 0 0 1 138 84" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+  <path d="M46 68 A 80 80 0 0 1 154 68" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.65"/>
+
+</svg>

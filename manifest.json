@@ -1,11 +1,11 @@
 {
-  "name": "投資関係 便利ツール",
+  "name": "株式投資 便利ツールまとめ",
   "short_name": "投資ツール",
   "description": "株式投資に役立つ無料ウェブツール一覧",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0d0f14",
-  "theme_color": "#0d0f14",
+  "background_color": "#eafcf7",
+  "theme_color": "#eafcf7",
   "orientation": "any",
   "icons": [
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },

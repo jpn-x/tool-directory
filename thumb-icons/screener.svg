@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g-screener" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B7CF8"/>
+      <stop offset="100%" stop-color="#5FA8F7"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#g-screener)"/>
+  
+  <polyline points="48,130 72,95 92,118 112,68 132,100" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="128" cy="128" r="26" fill="none" stroke="#fff" stroke-width="11"/>
+  <line x1="146" y1="146" x2="164" y2="164" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+
+</svg>

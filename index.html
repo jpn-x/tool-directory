@@ -3,235 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>投資関係 便利ツール</title>
-<meta name="description" content="株式投資に役立つ無料ウェブツール一覧。X高度検索・高ボラスクリーナー・ストップ高安分析・日証金速報・大量保有報告速報。">
-<meta name="theme-color" content="#0d0f14">
-<link rel="manifest" href="manifest.json">
+<title>株式投資 便利ツールまとめ</title>
+<meta name="description" content="株式投資に役立つ無料ウェブツールをまとめたリンク集。ストップ高安分析、ハイボラスクリーナー、日証金ダイジェスト、TDnet速報、上場廃止Watch、大量保有Radar、IPOロックアップ解除、X検索、NISAシミュレーターなど。">
+<meta name="theme-color" content="#eaf9f5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="投資ツール">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Baloo+2:wght@600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0d0f14;
-    --bg2: #13161e;
-    --bg3: #1a1e28;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.18);
-    --text: #f0f2f7;
-    --text-muted: #8892a4;
-    --accent: #4f8ef7;
-    --radius: 14px;
-    --font: 'Noto Sans JP', 'Inter', sans-serif;
+    --bg-top: #eafcf7;
+    --bg-bot: #e8f4ff;
+    --card: #ffffff;
+    --border: #e7f2ee;
+    --text: #26333a;
+    --text-muted: #6d7f88;
+    --accent: #23b892;
+    --accent2: #4fa8f5;
+    --pink: #ff8fab;
+    --radius: 22px;
+    --font: 'Noto Sans JP', sans-serif;
+    --font-display: 'Baloo 2', 'Noto Sans JP', sans-serif;
   }
 
   html, body {
     width: 100%;
     min-height: 100%;
-    background: var(--bg);
-    color: var(--text);
     font-family: var(--font);
+    color: var(--text);
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── HEADER TOP ROW ─── */
-  .header-top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 18px;
+  body {
+    background:
+      radial-gradient(900px 500px at 10% -10%, #d5f9ec 0%, transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, #dcefff 0%, transparent 55%),
+      linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bot) 100%);
+    background-attachment: fixed;
   }
 
-  .reload-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 11px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    color: var(--text-muted);
-    font-family: var(--font);
-    font-size: 11px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: border-color 0.15s, color 0.15s, background 0.15s;
-    user-select: none;
-    outline: none;
+  /* decorative floating blobs */
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: 0.55;
+    z-index: 0;
+    pointer-events: none;
   }
-  .reload-btn:hover {
-    border-color: rgba(255,255,255,0.28);
-    color: var(--text);
-    background: rgba(255,255,255,0.09);
-  }
-  .reload-btn:active { transform: scale(0.96); }
-  .reload-btn svg {
-    width: 11px; height: 11px;
-    stroke: currentColor; fill: none;
-    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-    flex-shrink: 0;
-  }
+  .blob1 { width: 220px; height: 220px; top: -60px; left: -60px; background: radial-gradient(circle at 30% 30%, #baf3de, transparent 70%); }
+  .blob2 { width: 260px; height: 260px; bottom: -80px; right: -60px; background: radial-gradient(circle at 30% 30%, #c9e6ff, transparent 70%); }
 
-  /* ─── PC LAYOUT ─── */
   .page {
-    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 64px 48px 80px;
+    padding: 56px 24px 72px;
   }
 
   .header {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
 
   .header .label {
-    display: inline-block;
-    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
-    background: rgba(79,142,247,0.12);
-    border: 1px solid rgba(79,142,247,0.25);
+    background: rgba(35,184,146,0.1);
+    border: 1px solid rgba(35,184,146,0.22);
     border-radius: 20px;
-    padding: 4px 14px;
+    padding: 6px 16px;
+    margin-bottom: 18px;
   }
 
-
   .header h1 {
-    font-size: 42px;
+    font-family: var(--font-display);
+    font-size: 40px;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    background: linear-gradient(135deg, #f0f2f7 0%, #8892a4 100%);
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  .header h1 .accent {
+    background: linear-gradient(120deg, var(--accent) 0%, var(--accent2) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .header p {
-    margin-top: 14px;
+    margin-top: 16px;
     font-size: 15px;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.8;
   }
 
-  /* ─── GRID ─── */
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 22px;
   }
 
-
-
   .card {
-    background: var(--bg2);
+    position: relative;
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-    cursor: pointer;
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 10px rgba(37, 76, 66, 0.05);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     outline: none;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
   }
 
-  .card:focus { outline: none; }
-  .card:focus:not(:focus-visible) { outline: none; }
-
   .card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-4px);
+    transform: translateY(-6px) scale(1.012);
+    box-shadow: 0 18px 34px rgba(30, 90, 75, 0.14);
+    border-color: rgba(35,184,146,0.35);
   }
 
   .thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    display: block;
-    overflow: hidden;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px 0 14px;
   }
 
   .thumb img {
-    width: 100%;
-    height: 100%;
+    width: 84px;
+    height: 84px;
     display: block;
-    object-fit: cover;
-    object-position: top center;
-    transition: transform 0.3s;
+    filter: drop-shadow(0 8px 14px rgba(20,60,50,0.16));
+    transition: transform 0.25s ease;
   }
 
   .card:hover .thumb img {
-    transform: scale(1.03);
+    transform: translateY(-3px) scale(1.05);
   }
 
   .card-body {
-    padding: 16px 18px 20px;
+    padding: 4px 22px 22px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .card-tag {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 8px;
   }
 
   .card-title {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.45;
     color: var(--text);
     margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
-  .card-icon {
-    width: 26px;
-    height: 26px;
-    border-radius: 6px;
-    flex-shrink: 0;
-    object-fit: cover;
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    flex: 1;
   }
 
   .card-link {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 500;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(120deg, var(--accent) 0%, var(--accent2) 100%);
+    border-radius: 20px;
+    padding: 9px 0;
+    margin-top: auto;
   }
 
   .card-link svg {
-    width: 12px;
-    height: 12px;
+    width: 13px;
+    height: 13px;
     stroke: currentColor;
     fill: none;
-    stroke-width: 2;
+    stroke-width: 2.4;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
 
-  /* ─── FOOTER ─── */
   .footer {
-    margin-top: 72px;
-    padding-top: 32px;
+    margin-top: 64px;
+    padding-top: 28px;
     border-top: 1px solid var(--border);
     text-align: center;
   }
@@ -239,172 +225,140 @@
   .footer p {
     font-size: 12px;
     color: var(--text-muted);
-    line-height: 1.8;
+    line-height: 1.9;
   }
 
   .footer a {
     color: var(--accent);
     text-decoration: none;
+    font-weight: 700;
   }
 
   .footer a:hover { text-decoration: underline; }
 
-  /* ─── MOBILE LAYOUT (9:16) ─── */
-  @media (max-width: 767px) {
-    .page {
-      padding: 40px 20px 60px;
-    }
-
-    .header h1 {
-      font-size: 28px;
-    }
-
-    .header p {
-      font-size: 13px;
-    }
-
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .card-title {
-      font-size: 14px;
-    }
-
-    .footer {
-      margin-top: 48px;
-    }
+  @media (max-width: 900px) and (min-width: 640px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* タブレット: 2列 */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
+  @media (max-width: 639px) {
+    .page { padding: 40px 18px 56px; }
+    .header h1 { font-size: 28px; }
+    .grid { grid-template-columns: 1fr; gap: 16px; }
   }
 </style>
 </head>
 <body>
 
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
 <div class="page">
 
   <header class="header">
-    <div class="header-top">
-      <button class="reload-btn" onclick="location.reload(true)" title="Shift+Ctrl+R">
-        <svg viewBox="0 0 16 16"><path d="M13.5 2.5A7 7 0 1 0 15 8"/><polyline points="11 1 15 1 15 5"/></svg>
-        強制リロード
-      </button>
-      <div class="label">Investment Tools</div>
-    </div>
-    <h1>投資関係 便利ツール</h1>
-    <p>株式投資に役立つ無料ウェブツールをまとめました。<br>各ツールは別タブで開きます。</p>
+    <div class="label">🌿 Investment Tools</div>
+    <h1>株式投資が、もっとラクに。<br><span class="accent">便利ツールまとめ</span></h1>
+    <p>むらやんが作った株式投資まわりの無料ツールをひとまとめにしました。<br>気になるものをタップして、それぞれのツールへどうぞ。</p>
   </header>
 
   <div class="grid">
 
-    <!-- ① X高度検索ツール -->
-    <a class="card" href="https://x-post-tools.github.io/x-search/" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-1-xsearch.jpg" alt="X 高度検索ツール" loading="lazy"></div>
-      <div class="card-body">
-        <div class="card-tag">SNS 検索</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-1.png" alt="">X 高度検索ツール</div>
-        <div class="card-link">
-          x-post-tools.github.io
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
-      </div>
-    </a>
-
-    <!-- ② 高ボラ銘柄スクリーナー -->
-    <a class="card" href="https://jpn-x.github.io/kabu-screener/desktop.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-2-screener.jpg" alt="高ボラ銘柄スクリーナー" loading="lazy"></div>
-      <div class="card-body">
-        <div class="card-tag">銘柄スクリーニング</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-2.png" alt="">高ボラ銘柄スクリーナー</div>
-        <div class="card-link">
-          jpn-x.github.io/kabu-screener
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
-      </div>
-    </a>
-
-    <!-- ③ ストップ高安ギャップ分析 -->
-    <a class="card" href="https://jpn-x.github.io/kabu-stop/" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-3-stop.jpg" alt="ストップ高安ギャップ分析" loading="lazy"></div>
+    <a class="card" href="https://kabu-stop.pages.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/stop-gap.svg" alt="株ストップギャップ分析" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">マーケット分析</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-3.png" alt="">日々ストップ高安 ギャップ分析</div>
-        <div class="card-link">
-          jpn-x.github.io/kabu-stop
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
+        <div class="card-title">株ストップギャップ分析</div>
+        <div class="card-desc">ストップ高安した銘柄の翌日とのギャップを日々分析。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
       </div>
     </a>
 
-    <!-- ④ 日証金ニュース -->
-    <a class="card" href="https://jpn-x.github.io/taisyaku-news/?v=1781172754283" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-4-taisyaku.jpg" alt="日証金お知らせ速報" loading="lazy"></div>
+    <a class="card" href="https://jpn-x.github.io/kabu-screener/desktop.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/screener.svg" alt="ハイボラデイトレ株スクリーナー" loading="lazy"></div>
       <div class="card-body">
-        <div class="card-tag">貸借取引 情報</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-4.png" alt="">日証金 お知らせ速報</div>
-        <div class="card-link">
-          jpn-x.github.io/taisyaku-news
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
+        <div class="card-tag">銘柄スクリーニング</div>
+        <div class="card-title">ハイボラデイトレ株スクリーナー</div>
+        <div class="card-desc">人気化しているハイボラ銘柄を抽出。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
       </div>
     </a>
 
-    <!-- ⑤ 大量保有報告速報 -->
-    <a class="card" href="https://jpn-x.github.io/holdings-radar/" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-5-holdings.jpg" alt="大量保有報告速報" loading="lazy"></div>
+    <a class="card" href="https://stop-data.cadillac600.workers.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/stop-data.svg" alt="直近ストップ高・安 一覧" loading="lazy"></div>
       <div class="card-body">
-        <div class="card-tag">開示情報 速報</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-5.png" alt="">大量保有報告 速報</div>
-        <div class="card-link">
-          jpn-x.github.io/holdings-radar
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
+        <div class="card-tag">ランキング</div>
+        <div class="card-title">直近ストップ高・安 一覧</div>
+        <div class="card-desc">当日のストップ高安銘柄の一覧。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
       </div>
     </a>
 
-    <!-- ⑥ 東証 危険銘柄ウォッチ -->
-    <a class="card" href="https://jpn-x.github.io/kabu-watch/" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-6-watch.jpg" alt="東証 危険銘柄ウォッチ" loading="lazy"></div>
+    <a class="card" href="https://taisyaku-news.cadillac600.workers.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/taisyaku.svg" alt="日証金ダイジェスト" loading="lazy"></div>
+      <div class="card-body">
+        <div class="card-tag">貸借取引ニュース</div>
+        <div class="card-title">日証金ダイジェスト</div>
+        <div class="card-desc">日々更新される日証金のニュース（貸借ニュース）。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
+      </div>
+    </a>
+
+    <a class="card" href="https://tdnet-web.cadillac600.workers.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/tdnet.svg" alt="TDnet リアルタイム更新ツール" loading="lazy"></div>
+      <div class="card-body">
+        <div class="card-tag">適時開示速報</div>
+        <div class="card-title">TDnet リアルタイム更新ツール</div>
+        <div class="card-desc">東証開示情報を自動更新で見れるツール。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
+      </div>
+    </a>
+
+    <a class="card" href="https://kabu-watch-7og.pages.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/watch.svg" alt="上場廃止Watch（危険銘柄）" loading="lazy"></div>
       <div class="card-body">
         <div class="card-tag">リスク管理</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-6.png" alt="">東証 危険銘柄ウォッチ</div>
-        <div class="card-link">
-          jpn-x.github.io/kabu-watch
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
+        <div class="card-title">上場廃止Watch（危険銘柄）</div>
+        <div class="card-desc">整理銘柄・監理銘柄・上場廃止確定銘柄を毎日自動更新。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
       </div>
     </a>
 
-    <!-- ⑦ IPO ロックアップ解除レーダー -->
-    <a class="card" href="https://jpn-x.github.io/ipo-lockup-radar/" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-8-ipo.jpg" alt="IPO ロックアップ解除レーダー" loading="lazy"></div>
+    <a class="card" href="https://holdings-radar.pages.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/holdings.svg" alt="大量保有速報 Radar" loading="lazy"></div>
       <div class="card-body">
-        <div class="card-tag">IPO 解除カレンダー</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-8.png" alt="">IPO ロックアップ解除レーダー</div>
-        <div class="card-link">
-          jpn-x.github.io/ipo-lockup-radar
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
+        <div class="card-tag">開示情報速報</div>
+        <div class="card-title">大量保有速報 Radar</div>
+        <div class="card-desc">大量保有速報やワラント残高も確認できる。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
       </div>
     </a>
 
-    <!-- ⑧ TDnet開示情報リアルタイム -->
-    <a class="card" href="https://jpn-x.github.io/tdnet-web/" target="_blank" rel="noopener">
-      <div class="thumb"><img src="thumb-7-tdnet.jpg" alt="TDnet開示情報リアルタイム" loading="lazy"></div>
+    <a class="card" href="https://ipo-lockup-radar.pages.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/ipo.svg" alt="IPO ロックアップ解除レーダー" loading="lazy"></div>
       <div class="card-body">
-        <div class="card-tag">適時開示 速報</div>
-        <div class="card-title"><img class="card-icon" src="site-icon-7.png" alt="">TDnet 開示情報リアルタイム</div>
-        <div class="card-link">
-          jpn-x.github.io/tdnet-web
-          <svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg>
-        </div>
+        <div class="card-tag">IPO解除カレンダー</div>
+        <div class="card-title">IPO ロックアップ解除レーダー</div>
+        <div class="card-desc">IPOのロックアップ解除日をカウントダウン。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
+      </div>
+    </a>
+
+    <a class="card" href="https://x-search.cadillac600.workers.dev" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/xsearch.svg" alt="X 高度検索ツール" loading="lazy"></div>
+      <div class="card-body">
+        <div class="card-tag">SNS検索</div>
+        <div class="card-title">X 高度検索ツール</div>
+        <div class="card-desc">株関係のX（旧Twitter）高度検索ツール。</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
+      </div>
+    </a>
+
+    <a class="card" href="https://jpn-x.github.io/moshimo-nisa/" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumb-icons/nisa.svg" alt="もしもNISAシミュレーター" loading="lazy"></div>
+      <div class="card-body">
+        <div class="card-tag">資産シミュレーション</div>
+        <div class="card-title">もしもNISAシミュレーター</div>
+        <div class="card-desc">あの時◯円始めていたら、今いくら？</div>
+        <div class="card-link">開く<svg viewBox="0 0 16 16"><path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="7" y2="9"/></svg></div>
       </div>
     </a>
 
@@ -415,18 +369,13 @@
       各ツールは個人の学習・研究目的で作成されています。投資判断はご自身の責任でお願いします。<br>
       制作：<a href="https://x.com/murayan2023" target="_blank" rel="noopener">@murayan2023</a>
       &nbsp;|&nbsp;
+      <a href="https://smile-labo.pages.dev/" target="_blank" rel="noopener">SMILE LABO</a>
+      &nbsp;|&nbsp;
       <a href="https://github.com/jpn-x" target="_blank" rel="noopener">GitHub: jpn-x</a>
     </p>
   </footer>
 
 </div><!-- /page -->
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  if (document.activeElement && document.activeElement !== document.body) {
-    document.activeElement.blur();
-  }
-});
-</script>
 </body>
 </html>
