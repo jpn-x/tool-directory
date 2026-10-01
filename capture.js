@@ -2,11 +2,11 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 
 const sites = [
-  { url: 'https://x-post-tools.github.io/x-search/', file: 'thumb-1-xsearch.jpg' },
-  { url: 'https://jpn-x.github.io/kabu-screener/desktop.html', file: 'thumb-2-screener.jpg' },
-  { url: 'https://jpn-x.github.io/kabu-stop/', file: 'thumb-3-stop.jpg' },
-  { url: 'https://jpn-x.github.io/taisyaku-news/?v=1781172754283', file: 'thumb-4-taisyaku.jpg' },
-  { url: 'https://jpn-x.github.io/holdings-radar/', file: 'thumb-5-holdings.jpg' },
+  { url: 'https://x-search.cadillac600.workers.dev/', file: 'thumb-1-xsearch.jpg' },
+  { url: 'https://kabu-screener.pages.dev/desktop', file: 'thumb-2-screener.jpg' },
+  { url: 'https://kabu-stop.pages.dev/', file: 'thumb-3-stop.jpg' },
+  { url: 'https://taisyaku-news.cadillac600.workers.dev/?v=1781172754283', file: 'thumb-4-taisyaku.jpg' },
+  { url: 'https://holdings-radar.pages.dev/', file: 'thumb-5-holdings.jpg' },
 ];
 
 (async () => {

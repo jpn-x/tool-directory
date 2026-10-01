@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const sites = [
   { url: 'https://kabu-stop.pages.dev', file: 'stop-gap.jpg' },
-  { url: 'https://jpn-x.github.io/kabu-screener/desktop.html', file: 'screener.jpg' },
+  { url: 'https://kabu-screener.pages.dev/desktop', file: 'screener.jpg' },
   { url: 'https://stop-data.cadillac600.workers.dev', file: 'stop-data.jpg' },
   { url: 'https://taisyaku-news.cadillac600.workers.dev', file: 'taisyaku.jpg' },
   { url: 'https://tdnet-web.cadillac600.workers.dev', file: 'tdnet.jpg' },
@@ -12,7 +12,7 @@ const sites = [
   { url: 'https://holdings-radar.pages.dev', file: 'holdings.jpg' },
   { url: 'https://ipo-lockup-radar.pages.dev', file: 'ipo.jpg' },
   { url: 'https://x-search.cadillac600.workers.dev', file: 'xsearch.jpg' },
-  { url: 'https://jpn-x.github.io/moshimo-nisa/', file: 'nisa.jpg' },
+  { url: 'https://moshimo-nisa.cadillac600.workers.dev/', file: 'nisa.jpg' },
 ];
 
 const outDir = path.join(__dirname, 'thumbs');

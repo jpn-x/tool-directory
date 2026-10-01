@@ -17,7 +17,7 @@ function download(url, dest) {
 (async () => {
   const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
   const page = await browser.newPage();
-  await page.goto('https://jpn-x.github.io/ipo-lockup-radar/', { waitUntil: 'networkidle2' });
+  await page.goto('https://ipo-lockup-radar.pages.dev/', { waitUntil: 'networkidle2' });
 
   const icons = await page.evaluate(() => {
     return Array.from(document.querySelectorAll('link[rel*="icon"]')).map(l => ({ rel: l.rel, href: l.href, sizes: l.sizes?.value }));
@@ -26,9 +26,9 @@ function download(url, dest) {
 
   // Try favicon.png, favicon-32.png etc.
   const candidates = [
-    'https://jpn-x.github.io/ipo-lockup-radar/favicon.png',
-    'https://jpn-x.github.io/ipo-lockup-radar/favicon-32.png',
-    'https://jpn-x.github.io/ipo-lockup-radar/favicon.ico',
+    'https://ipo-lockup-radar.pages.dev/favicon.png',
+    'https://ipo-lockup-radar.pages.dev/favicon-32.png',
+    'https://ipo-lockup-radar.pages.dev/favicon.ico',
   ];
 
   for (const url of candidates) {
