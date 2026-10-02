@@ -2,10 +2,10 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 
 const sites = [
-  { url: 'https://x-search.cadillac600.workers.dev/', file: 'thumb-1-xsearch.jpg' },
+  { url: 'https://x-search.jp-x.workers.dev/', file: 'thumb-1-xsearch.jpg' },
   { url: 'https://kabu-screener.pages.dev/desktop', file: 'thumb-2-screener.jpg' },
   { url: 'https://kabu-stop.pages.dev/', file: 'thumb-3-stop.jpg' },
-  { url: 'https://taisyaku-news.cadillac600.workers.dev/?v=1781172754283', file: 'thumb-4-taisyaku.jpg' },
+  { url: 'https://taisyaku-news.jp-x.workers.dev/?v=1781172754283', file: 'thumb-4-taisyaku.jpg' },
   { url: 'https://holdings-radar.pages.dev/', file: 'thumb-5-holdings.jpg' },
 ];
 

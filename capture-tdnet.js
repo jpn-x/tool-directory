@@ -5,7 +5,7 @@ const path = require('path');
   const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 720 });
-  await page.goto('https://tdnet-web.cadillac600.workers.dev/', { waitUntil: 'networkidle2', timeout: 30000 });
+  await page.goto('https://tdnet-web.jp-x.workers.dev/', { waitUntil: 'networkidle2', timeout: 30000 });
   await new Promise(r => setTimeout(r, 3000));
 
   // Click ◄ to go to previous day (6/16)

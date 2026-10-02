@@ -5,10 +5,10 @@ const fs = require('fs');
 const path = require('path');
 
 const sites = [
-  { url: 'https://x-search.cadillac600.workers.dev/',                    name: 'site-icon-1.png' },
+  { url: 'https://x-search.jp-x.workers.dev/',                    name: 'site-icon-1.png' },
   { url: 'https://kabu-screener.pages.dev/desktop',          name: 'site-icon-2.png' },
   { url: 'https://kabu-stop.pages.dev/',                          name: 'site-icon-3.png' },
-  { url: 'https://taisyaku-news.cadillac600.workers.dev/?v=1781172754283',      name: 'site-icon-4.png' },
+  { url: 'https://taisyaku-news.jp-x.workers.dev/?v=1781172754283',      name: 'site-icon-4.png' },
   { url: 'https://holdings-radar.pages.dev/',                     name: 'site-icon-5.png' },
   { url: 'https://kabu-watch-7og.pages.dev/',                        name: 'site-icon-6.png' },
 ];

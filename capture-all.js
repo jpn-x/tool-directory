@@ -5,14 +5,14 @@ const fs = require('fs');
 const sites = [
   { url: 'https://kabu-stop.pages.dev', file: 'stop-gap.jpg' },
   { url: 'https://kabu-screener.pages.dev/desktop', file: 'screener.jpg' },
-  { url: 'https://stop-data.cadillac600.workers.dev', file: 'stop-data.jpg' },
-  { url: 'https://taisyaku-news.cadillac600.workers.dev', file: 'taisyaku.jpg' },
-  { url: 'https://tdnet-web.cadillac600.workers.dev', file: 'tdnet.jpg' },
+  { url: 'https://stop-data.jp-x.workers.dev', file: 'stop-data.jpg' },
+  { url: 'https://taisyaku-news.jp-x.workers.dev', file: 'taisyaku.jpg' },
+  { url: 'https://tdnet-web.jp-x.workers.dev', file: 'tdnet.jpg' },
   { url: 'https://kabu-watch-7og.pages.dev', file: 'watch.jpg' },
   { url: 'https://holdings-radar.pages.dev', file: 'holdings.jpg' },
   { url: 'https://ipo-lockup-radar.pages.dev', file: 'ipo.jpg' },
-  { url: 'https://x-search.cadillac600.workers.dev', file: 'xsearch.jpg' },
-  { url: 'https://moshimo-nisa.cadillac600.workers.dev/', file: 'nisa.jpg' },
+  { url: 'https://x-search.jp-x.workers.dev', file: 'xsearch.jpg' },
+  { url: 'https://moshimo-nisa.jp-x.workers.dev/', file: 'nisa.jpg' },
 ];
 
 const outDir = path.join(__dirname, 'thumbs');
